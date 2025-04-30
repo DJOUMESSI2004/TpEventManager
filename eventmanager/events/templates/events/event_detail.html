@@ -1,0 +1,14 @@
+<h2>{{ event.title }}</h2>
+<p>{{ event.description }}</p>
+<p>Date : {{ event.date }}</p>
+<p>Participants confirmés : {{ event.confirmed_participants_count }}</p>
+
+{% if can_participate %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Envoyer ma réponse</button>
+  </form>
+{% else %}
+  <p>Connectez-vous pour indiquer votre participation.</p>
+{% endif %}
